@@ -156,6 +156,17 @@ ud_insn_off(const struct ud* u)
 }
 
 
+//DW
+char HEXDIGIT[] = "0123456789abcdef";
+ 
+void ConvHex(char *buff, unsigned char data){
+     buff[1] = HEXDIGIT[data & 0x0f];
+     data >>= 4;
+     buff[0] = HEXDIGIT[data & 0x0f];
+     buff[2] = 0;
+}
+
+
 /* =============================================================================
  * ud_insn_hex() - Returns hex form of disassembled instruction.
  * =============================================================================
@@ -172,7 +183,8 @@ ud_insn_hex(struct ud* u)
     /* for each byte used to decode instruction */
     for (i = 0; i < ud_insn_len(u) && i < sizeof(u->insn_hexcode) / 2;
          ++i, ++src_ptr) {
-      sprintf(src_hex, "%02x", *src_ptr & 0xFF);
+	ConvHex( src_hex, *src_ptr & 0xFF );      
+	//sprintf(src_hex, "%02x", *src_ptr & 0xFF);
       src_hex += 2;
     }
   }
