@@ -30,6 +30,21 @@
 #include "syn.h"
 #include "udint.h"
 
+
+/* =============================================================================
+ * ud_opr_is_sreg
+ *    Returns non-zero if the given operand is of a segment register type.
+ * =============================================================================
+ */
+int
+ud_opr_is_sreg(const struct ud_operand *opr)
+{
+  return opr->type == UD_OP_REG && 
+         opr->base >= UD_R_ES   &&
+         opr->base <= UD_R_GS;
+}
+
+
 /* -----------------------------------------------------------------------------
  * opr_cast() - Prints an operand cast.
  * -----------------------------------------------------------------------------
