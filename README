@@ -33,6 +33,11 @@ libudis86
   o Re-entrant, no dynamic memory allocation.
   o Fully documented API
 
+Differences to upstream
+-----------------------
+  o Added precompiled headers
+  o Hacked code to build with the anciend Borland C++ free compiled 5.5 to be able to link to old Borland products.
+  
 
   -- EXAMPLE -----------------------------------------------------------
     
